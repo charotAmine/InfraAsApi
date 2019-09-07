@@ -8,10 +8,10 @@ steps:
     containerRegistry: 'docker'
     command: 'build'
     Dockerfile: '**/Dockerfile'
-    tags: '$(Build.Repository.Name):$(Build.BuildId)'
+    tags: 'infraasapi:latest'
 - task: Docker@2
   inputs:
     containerRegistry: 'docker'
     repository: 'infraasapi'
     command: 'push'
-    tags: '$(Build.Repository.Name):$(Build.BuildId)'
+    tags: 'infraasapi:latest'
