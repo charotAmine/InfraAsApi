@@ -7,15 +7,15 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-nanoserver-1809 AS build
-WORKDIR /app
-COPY . ./
-
-RUN dotnet restore
-RUN dotnet build -c Release
+WORKDIR /src
+COPY ["InfraAsApi_Rest.csproj", "/"]
+RUN dotnet restore "InfraAsApi_Rest.csproj"
+COPY . .
+WORKDIR "/src/InfraAsApi_Rest"
+RUN dotnet build "InfraAsApi_Rest.csproj" -c Release -o /app
 
 FROM build AS publish
-WORKDIR /app
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish "InfraAsApi_Rest.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
