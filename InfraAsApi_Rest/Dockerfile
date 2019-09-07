@@ -8,7 +8,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-nanoserver-1809 AS build
 WORKDIR /src
-COPY ["**/InfraAsApi_Rest.csproj", "/"]
+COPY ["InfraAsApi_Rest/InfraAsApi_Rest.csproj", "/"]
 RUN dotnet restore "**/InfraAsApi_Rest.csproj"
 COPY . .
 WORKDIR "/src/InfraAsApi_Rest"
