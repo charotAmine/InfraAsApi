@@ -13,3 +13,14 @@ steps:
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)/app'
     artifactName: app
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: '$(Build.Repository.Name):$(Build.BuildId)'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    command: 'push'
+    tags: '$(Build.Repository.Name):$(Build.BuildId)'
