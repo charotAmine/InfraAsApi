@@ -2,6 +2,7 @@ pool:
   vmImage: 'windows-latest'
    
 steps:
+
 - task: Docker@2
   inputs:
     containerRegistry: 'docker'
