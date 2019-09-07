@@ -3,10 +3,10 @@ pool:
    
 steps:
  
-- script: dotnet build 'InfraAsApi_Rest.sln' --configuration 'Release'
+- script: dotnet build '**/InfraAsApi_Rest.sln' --configuration 'Release'
   displayName: 'Build solution'
      
-- script: dotnet publish 'InfraAsApi_Rest/InfraAsApi_Rest.csproj' --configuration 'Release' --output '$(Build.ArtifactStagingDirectory)/app'
+- script: dotnet publish '**/InfraAsApi_Rest/InfraAsApi_Rest.csproj' --configuration 'Release' --output '$(Build.ArtifactStagingDirectory)/app'
   displayName: 'Package infraAsApi app'
 - task: PublishBuildArtifacts@1
   displayName: 'Publishing app artifact'
