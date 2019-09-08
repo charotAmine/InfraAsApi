@@ -17,7 +17,7 @@ namespace InfraAsApi_Rest.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            Process[] processList = Process.GetProcesses("51.145.180.77");
+            Process[] processList = Process.GetProcesses("infraasapi-vm");
             List <ProcessPerformanceCounter> processes = new List<ProcessPerformanceCounter>();
             foreach (Process process in processList)
             {
